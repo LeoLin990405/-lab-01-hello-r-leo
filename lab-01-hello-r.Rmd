@@ -16,7 +16,12 @@ library(datasauRus)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+```{r}
+datasaurus_dozen %>%
+  count(dataset) %>%
+  print(13)
+```
+
 
 ### Exercise 2
 
@@ -49,13 +54,21 @@ To finish, clean up the narrative by removing these instructions.
 
 
 ```{r plot-star}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
 
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
 I'm some filler text, you should replace me with more meaningful text...
 
 ```{r cor-star}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star") #分割数据
 
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()#可视化
 ```
 
 ### Exercise 4
@@ -65,7 +78,12 @@ Note that two R chunks are given but they are not labeled.
 Use the convention from above to name them appropriately.
 
 ```{r}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle") #分割数据
 
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()#可视化
+```
 ```
 
 ```{r}
@@ -73,6 +91,13 @@ Use the convention from above to name them appropriately.
 ```
 
 ### Exercise 5
+```{r}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) %>%
+  print(13)
+```
+
 
 Add code and narrative as needed.
 
